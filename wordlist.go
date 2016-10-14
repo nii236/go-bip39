@@ -8,10 +8,16 @@ import (
 var WordList = EnglishWordList
 
 var ReverseWordMap map[string]int = map[string]int{}
+var TruncatedWordMap map[string]string = map[string]string{}
 
 func init() {
 	for i, v := range WordList {
 		ReverseWordMap[v] = i
+		if len(v) < 4 {
+			TruncatedWordMap[v] = v
+		} else {
+			TruncatedWordMap[v[0:4]] = v
+		}
 	}
 }
 
